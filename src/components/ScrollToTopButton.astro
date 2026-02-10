@@ -1,0 +1,28 @@
+<button
+  type="button"
+  class="scroll-top-btn"
+  aria-label="Scroll to top"
+  data-scroll-top-btn
+  hidden
+>
+  ↑
+</button>
+
+<script>
+  const scrollBtn = document.querySelector('[data-scroll-top-btn]');
+  if (scrollBtn) {
+    const syncScrollBtn = () => {
+      const show = window.scrollY > 560;
+      scrollBtn.hidden = !show;
+      scrollBtn.classList.toggle('is-visible', show);
+    };
+
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    window.addEventListener('scroll', syncScrollBtn, { passive: true });
+    window.addEventListener('resize', syncScrollBtn);
+    syncScrollBtn();
+  }
+</script>

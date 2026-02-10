@@ -1,0 +1,67 @@
+:root {
+  /* Core color system */
+  --color-ink-950: #121518;
+  --color-ink-900: #1b2128;
+  --color-ink-800: #283240;
+  --color-ink-600: #4d5b6f;
+  --color-surface-0: #ffffff;
+  --color-surface-50: #fbfaf8;
+  --color-surface-100: #f4efe6;
+  --color-border-soft: #1b21281f;
+  --color-border-strong: #1b212845;
+  --color-accent-600: #22942a;
+  --color-accent-700: #22942a;
+  --color-accent-300: #5fcf67;
+
+  /* Brand aliases used by existing classes */
+  --color-brand-red: var(--color-accent-600);
+  --color-brand-dark: var(--color-ink-900);
+  --color-brand-warm: var(--color-surface-100);
+  --color-brand-accent: var(--color-accent-300);
+  --color-text: var(--color-ink-950);
+  --color-muted: var(--color-ink-600);
+
+  /* Typography scale */
+  --font-display: "Work Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Work Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --text-display: clamp(2.3rem, 7.6vw, 4.4rem);
+  --text-h1: clamp(2rem, 5.8vw, 3.5rem);
+  --text-h2: clamp(1.65rem, 4vw, 2.55rem);
+  --text-h3: clamp(1.25rem, 2.6vw, 1.7rem);
+  --text-body: 1rem;
+  --text-small: 0.9rem;
+
+  /* Spacing, radius, elevation */
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-14: 3.5rem;
+  --space-16: 4rem;
+  --space-section: clamp(3.2rem, 8vw, 6rem);
+  --radius-sm: 0.65rem;
+  --radius-md: 0.95rem;
+  --radius-lg: 1.25rem;
+  --radius-pill: 999px;
+  --shadow-soft: 0 8px 22px rgba(24, 31, 43, 0.08);
+  --shadow-card: 0 18px 30px rgba(20, 28, 38, 0.09);
+  --shadow-cta: 0 14px 30px rgba(34, 148, 42, 0.28);
+  --shadow-hero-card: 0 28px 48px rgba(8, 14, 24, 0.35);
+  --shadow-ring: 0 0 0 0 rgba(34, 148, 42, 0);
+  --hero-overlay-start: rgba(9, 14, 24, 0.84);
+  --hero-overlay-mid: rgba(13, 21, 34, 0.56);
+  --hero-overlay-end: rgba(20, 29, 44, 0.24);
+
+  /* Motion */
+  --ease-premium: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast: 220ms;
+  --dur-med: 300ms;
+
+  /* Layout */
+  --container-max: 75rem;
+  --container-reading: 66rem;
+}

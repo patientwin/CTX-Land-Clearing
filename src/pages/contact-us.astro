@@ -1,0 +1,151 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import QuickEstimateForm from '@/components/QuickEstimateForm.astro';
+import FAQ from '@/components/FAQ.astro';
+import { faqSchema } from '@/utils/schema';
+import { company, migrationInputs } from '@/data/site';
+import heroBg from '@/assets/grading-and-leveling.jpeg';
+
+const faqItems = [
+  {
+    q: 'How quickly can I get a land clearing estimate in Austin?',
+    a: 'Most estimate requests receive a follow-up quickly during business hours. Share project location, acreage, and service type so we can scope your request accurately.'
+  },
+  {
+    q: 'What information should I include on the form?',
+    a: 'Include your preferred service, project size or frontage, property location, and any access notes. This helps us provide a more useful first response.'
+  },
+  {
+    q: 'Do you service areas outside Austin?',
+    a: 'Yes. We serve Austin and nearby Central Texas communities including Round Rock, Cedar Park, Leander, Dripping Springs, Lakeway, Buda, and Kyle.'
+  },
+  {
+    q: 'Can I call instead of filling out the form?',
+    a: `Yes. Call ${company.phone} and we can discuss your project scope directly.`
+  }
+];
+
+const contactPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: `Contact ${company.name}`,
+  url: `${migrationInputs.newSiteDomain}/contact-us/`,
+  description: 'Contact CTX Land Clearing and Forestry Mulching for land clearing, forestry mulching, and grading estimates in Austin and Central Texas.',
+  mainEntity: {
+    '@type': 'LocalBusiness',
+    '@id': `${migrationInputs.newSiteDomain}/#localbusiness`,
+    name: company.name,
+    telephone: company.phone,
+    email: company.email,
+    areaServed: company.serviceAreas,
+    hasMap: 'https://maps.app.goo.gl/eRKdYf6Wv16bUh4eA',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      telephone: company.phone,
+      areaServed: 'Central Texas',
+      availableLanguage: 'English'
+    },
+    sameAs: [
+      'https://www.facebook.com/CTX-Land-Clearing-and-Forestry-Mulching-101605442531643',
+      'https://www.instagram.com/ctxlandclearing',
+      'https://www.youtube.com/channel/UCH8nL1t2YOdsmuhE7mBqMlw',
+      'https://x.com/ctxlandclearing'
+    ]
+  }
+};
+
+const seo = {
+  title: 'Contact Us Austin TX | CTX Land Clearing and Forestry Mulching',
+  description: 'Contact CTX Land Clearing and Forestry Mulching in Austin, Texas for land clearing, forestry mulching, and grading estimates in Central Texas.',
+  path: '/contact-us/'
+};
+---
+<BaseLayout seo={seo} schema={[contactPageSchema, faqSchema(faqItems)]}>
+  <section class="service-hero">
+    <Picture
+      src={heroBg}
+      alt=""
+      formats={['avif', 'webp']}
+      widths={[960, 1280, 1600]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      class="service-hero-image"
+    />
+    <div class="service-hero-overlay" aria-hidden="true"></div>
+    <div class="container-standard service-hero-inner">
+      <h1>Contact CTX Land Clearing and Forestry Mulching</h1>
+    </div>
+  </section>
+
+  <section class="section-standard service-main contact-page">
+    <div class="container-standard">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Contact', href: '/contact-us/' }]} />
+      <div class="service-content-grid mt-4">
+        <article class="service-content">
+          <h2>Get a Free Estimate in Austin and Central Texas</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <p>Use the estimate form to request land clearing, forestry mulching, lot clearing, or land grading services. Provide as much project detail as possible so we can respond with practical next steps.</p>
+          <p>Prefer to call? Reach us at <a href={`tel:${company.phoneHref}`} class="link-cta" data-track="call_click">{company.phone}</a>.</p>
+          <div class="contact-mobile-form">
+            <QuickEstimateForm title="Get a Free Estimate" buttonLabel="Submit" heroMode={true} />
+          </div>
+
+          <h2>Business Contact Details</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <p><strong>Business:</strong> {company.name}</p>
+          <p><strong>Phone:</strong> <a href={`tel:${company.phoneHref}`} class="link-cta" data-track="call_click">{company.phone}</a></p>
+          <p><strong>Email:</strong> <a href={`mailto:${company.email}`} class="link-cta">{company.email}</a></p>
+          <p><strong>Primary Location:</strong> Austin, Texas</p>
+          <p><strong>Hours:</strong> Monday-Saturday, 8:00am-6:00pm</p>
+          <p><strong>Map:</strong> <a href="https://maps.app.goo.gl/eRKdYf6Wv16bUh4eA" target="_blank" rel="noopener noreferrer" class="link-cta">Open service location in Google Maps</a></p>
+
+          <h2>Service Areas</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <p>We provide land clearing and forestry mulching services across Central Texas, including:</p>
+          <ul class="list-disc pl-6">
+            {company.serviceAreas.map((area) => <li>{area}</li>)}
+          </ul>
+          <p>Review full area coverage on our <a href="/service-areas/" class="link-cta">Service Areas page</a>.</p>
+
+          <h2>Related Services</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <ul class="list-disc pl-6">
+            <li><a href="/land-clearing-services-central-texas/" class="link-cta">Land Clearing Austin TX</a></li>
+            <li><a href="/forestry-mulching-central-texas/" class="link-cta">Forestry Mulching Austin TX</a></li>
+            <li><a href="/lot-clearing-central-texas/" class="link-cta">Lot Clearing Austin Texas</a></li>
+            <li><a href="/land-grading-central-texas/" class="link-cta">Land Grading Central Texas</a></li>
+          </ul>
+        </article>
+
+        <div class="service-sidebar">
+          <QuickEstimateForm title="Get a Free Estimate" buttonLabel="Submit" heroMode={true} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-standard">
+    <div class="container-standard">
+      <h2 class="font-[var(--font-display)] text-4xl uppercase text-brand-dark">Find Us on the Map</h2>
+      <div class="service-divider mt-2" aria-hidden="true"></div>
+      <p class="mt-4 max-w-[72ch] text-[var(--color-muted)]">Serving Austin and nearby Central Texas communities.</p>
+      <div class="mt-6 overflow-hidden rounded-xl border border-black/15 bg-white shadow-[var(--shadow-soft)]">
+        <iframe
+          title="CTX Land Clearing and Forestry Mulching service location map"
+          src="https://www.google.com/maps?q=Austin%2C%20Texas&output=embed"
+          width="100%"
+          height="380"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          style="border:0;"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} />
+</BaseLayout>

@@ -1,0 +1,24 @@
+---
+import type { SeoConfig } from '@/utils/seo';
+import { seo } from '@/utils/seo';
+import { company } from '@/data/site';
+
+const props = Astro.props as SeoConfig;
+const meta = seo(props);
+---
+<title>{meta.title}</title>
+<meta name="description" content={meta.description} />
+<link rel="canonical" href={meta.canonical} />
+<meta name="robots" content={meta.noindex ? 'noindex,nofollow' : 'index,follow'} />
+<meta name="theme-color" content="#1e2328" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={company.name} />
+<meta property="og:locale" content="en_US" />
+<meta property="og:title" content={meta.title} />
+<meta property="og:description" content={meta.description} />
+<meta property="og:url" content={meta.canonical} />
+<meta property="og:image" content={meta.image} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={meta.title} />
+<meta name="twitter:description" content={meta.description} />
+<meta name="twitter:image" content={meta.image} />

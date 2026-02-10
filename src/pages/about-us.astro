@@ -1,0 +1,147 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { company, migrationInputs } from '@/data/site';
+import heroBg from '@/assets/grading-and-leveling.jpeg';
+import landClearingThumb from '@/assets/land-clearning-thumbnail.jpeg';
+import galleryThumb from '@/assets/tree-stump-removal-thumbnail.jpeg';
+
+const aboutPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: `About ${company.name}`,
+  url: `${migrationInputs.newSiteDomain}/about-us/`,
+  description: 'Learn about CTX Land Clearing and Forestry Mulching, our equipment, and how we serve Austin and nearby Central Texas communities.',
+  about: {
+    '@type': 'LocalBusiness',
+    '@id': `${migrationInputs.newSiteDomain}/#localbusiness`,
+    name: company.name,
+    telephone: company.phone,
+    areaServed: company.serviceAreas
+  }
+};
+
+const seo = {
+  title: 'About Us | CTX Land Clearing and Forestry Mulching',
+  description: 'About CTX Land Clearing and Forestry Mulching in Austin, Texas. Learn about our mission, equipment, service coverage, and local land clearing expertise.',
+  path: '/about-us/'
+};
+---
+<BaseLayout seo={seo} schema={aboutPageSchema}>
+  <section class="about-hero">
+    <Picture
+      src={heroBg}
+      alt=""
+      formats={['avif', 'webp']}
+      widths={[960, 1280, 1600]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      class="about-hero-image"
+    />
+    <div class="about-hero-overlay" aria-hidden="true"></div>
+    <div class="container-standard about-hero-inner">
+      <h1>CTX Land Clearing and Forestry Mulching</h1>
+    </div>
+  </section>
+
+  <section class="section-standard about-main">
+    <div class="container-standard">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'About', href: '/about-us/' }]} />
+      <div class="about-layout mt-4">
+        <article class="about-content">
+          <h2>About Us</h2>
+          <div class="about-divider" aria-hidden="true"></div>
+          <p>Owned and operated by Brooks Norman, CTX Land Clearing and Forestry Mulching is equipped for all your residential or commercial land needs. From lots to ranches, we offer 5-star services that are fully licensed and insured.</p>
+          <Picture
+            src={landClearingThumb}
+            alt="Cleared lot in Austin Texas prepared for next phase work"
+            formats={['avif', 'webp']}
+            widths={[640, 960, 1280]}
+            sizes="(min-width: 768px) 66vw, 100vw"
+            loading="lazy"
+            decoding="async"
+            class="about-main-image"
+          />
+
+          <h2>Our Mission</h2>
+          <div class="about-divider" aria-hidden="true"></div>
+          <p>Our reputation is our company's greatest asset, so we deliver professional quality on each and every project. With decades of collective experience and a full range of equipment and technologies, rest assured your property and investment is in great hands.</p>
+
+          <h2>Locally Owned and Operated</h2>
+          <div class="about-divider" aria-hidden="true"></div>
+          <p>We know Central Texas. From the soil, brush, and trees to local rules and regulations, we bring in-depth knowledge along with our crew. We have experience working with local and state organizations in the area, ensuring all rules and regulations are met.</p>
+
+          <h2>Our Equipment</h2>
+          <div class="about-divider" aria-hidden="true"></div>
+          <ul class="about-list">
+            <li>2021 Cat 299D3 Skid Steer, high flow, hydraulic fluid cooled</li>
+            <li>2018 Kubota 95 Skid Steer, high flow, hydraulic fluid cooled</li>
+            <li>2021 Kubota 75 Skid Steer</li>
+            <li>18-foot dump trailer</li>
+            <li>35-foot dovetail haul trailer</li>
+            <li>27-foot utility trailer with fuel cell, generator, and welder</li>
+            <li>Attachments: mulcher, smooth bucket, grapple bucket, dozer blade, stump puller, utility trencher</li>
+            <li>Larger equipment such as dozers, center cabs, or excavators available as needed</li>
+          </ul>
+
+          <h2>Our Services</h2>
+          <div class="about-divider" aria-hidden="true"></div>
+          <ul class="about-list about-services-list">
+            <li><a href="/land-clearing-services-central-texas/" class="link-cta">Land Clearing</a></li>
+            <li><a href="/forestry-mulching-central-texas/" class="link-cta">Forestry Mulching</a></li>
+            <li><a href="/lot-clearing-central-texas/" class="link-cta">Lot Clearing</a></li>
+            <li><a href="/land-grading-central-texas/" class="link-cta">Grading and Leveling</a></li>
+            <li><a href="/land-clearing-services-central-texas/" class="link-cta">Site Prep</a></li>
+            <li><a href="/service-areas/" class="link-cta">Service Areas</a></li>
+          </ul>
+        </article>
+
+        <aside class="about-sidebar">
+          <section class="about-widget">
+            <h3>Reach Us</h3>
+            <ul>
+              <li><span class="dot" aria-hidden="true"></span>Mon - Sat: 8:00am - 6:00pm</li>
+              <li><span class="dot" aria-hidden="true"></span>Tel: <a href={`tel:${company.phoneHref}`} data-track="call_click">{company.phone}</a></li>
+            </ul>
+          </section>
+
+          <section class="about-widget">
+            <h3>Our Gallery</h3>
+            <Picture
+              src={galleryThumb}
+              alt="Tracked skid steer on trailer ready for a Central Texas project"
+              formats={['avif', 'webp']}
+              widths={[480, 720]}
+              sizes="(min-width: 1024px) 22vw, (min-width: 768px) 30vw, 100vw"
+              loading="lazy"
+              decoding="async"
+              class="about-sidebar-image"
+            />
+          </section>
+
+          <section class="about-widget">
+            <h3>Our Social Media</h3>
+            <ul>
+              <li><span class="dot" aria-hidden="true"></span><a href="https://www.facebook.com/CTX-Land-Clearing-and-Forestry-Mulching-101605442531643" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+              <li><span class="dot" aria-hidden="true"></span><a href="https://www.instagram.com/ctxlandclearing" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+              <li><span class="dot" aria-hidden="true"></span><a href="https://www.youtube.com/channel/UCH8nL1t2YOdsmuhE7mBqMlw" target="_blank" rel="noopener noreferrer">Youtube</a></li>
+              <li><span class="dot" aria-hidden="true"></span><a href="https://x.com/ctxlandclearing" target="_blank" rel="noopener noreferrer">X / Twitter</a></li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-cta">
+    <div class="container-standard about-cta-inner">
+      <div>
+        <h2>Get a Free Estimate for Land Clearing Services in Austin Texas Today</h2>
+        <p>Looking for an honest estimate or consultation for your property? See why hundreds of Texans have trusted CTX with their land clearing and forestry mulching needs.</p>
+      </div>
+      <a href="/contact-us/" class="btn-primary" data-track="service_cta_click" data-label="About CTA Estimate">Get Your Free Estimate</a>
+    </div>
+  </section>
+</BaseLayout>

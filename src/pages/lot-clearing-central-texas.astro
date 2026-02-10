@@ -1,0 +1,92 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import ServiceSidebar from '@/components/ServiceSidebar.astro';
+import { serviceSchema } from '@/utils/schema';
+import { company } from '@/data/site';
+import heroBg from '@/assets/hero-bg.jpeg';
+import lotMainImage from '@/assets/lot-clearing-thumbnail.jpeg';
+import galleryThumb from '@/assets/grading-and-leveling.jpeg';
+
+const seo = {
+  title: 'Lot Clearing Austin Texas | CTX Land Clearing',
+  description: 'Lot clearing Austin Texas services for residential and commercial properties across Central Texas. Clear overgrowth, prep sites, and improve access with CTX.',
+  path: '/lot-clearing-central-texas/'
+};
+---
+<BaseLayout seo={seo} schema={serviceSchema('Lot Clearing Austin Texas', seo.description, 'https://staging.ctxlandclearing.local/lot-clearing-central-texas/')}>
+  <section class="service-hero">
+    <Picture
+      src={heroBg}
+      alt=""
+      formats={['avif', 'webp']}
+      widths={[960, 1280, 1600]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      class="service-hero-image"
+    />
+    <div class="service-hero-overlay" aria-hidden="true"></div>
+    <div class="container-standard service-hero-inner">
+      <h1>CTX Land Clearing and Forestry Mulching</h1>
+    </div>
+  </section>
+
+  <section class="section-standard service-main">
+    <div class="container-standard">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services/' }, { label: 'Lot Clearing Austin Texas', href: '/lot-clearing-central-texas/' }]} />
+      <div class="service-content-grid mt-4">
+        <article class="service-content">
+          <h2>Lot Clearing Austin Texas</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <p>Lot clearing, unlike the more general land clearing, includes the same tree and unwanted vegetation removal but often involves more targeted goals. These goals can be as simple as removing brush from the foundation of a property to prepare for construction site preparation for large-scale development.</p>
+          <p>Regardless of the reason, when you're ready to consider clearing a lot, hiring a specialist is a must. This process can involve similar machinery to full land clearing and forestry mulching, but most jobs also require permits before work begins in earnest. Working with a contractor helps ensure everything is done right the first time.</p>
+
+          <Picture
+            src={lotMainImage}
+            alt="Large cleared lot in Central Texas prepared for next project phase"
+            formats={['avif', 'webp']}
+            widths={[640, 960, 1280]}
+            sizes="(min-width: 768px) 68vw, 100vw"
+            loading="lazy"
+            decoding="async"
+            class="service-main-image"
+          />
+
+          <h2>What Are Some Types of Lot Clearing Services</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <p>Lot clearing comes in a lot of varieties but outside of the typical tree removal, there are a few other services to consider.</p>
+          <p>Right-of-way clearing is essential when clearing land to build new construction, creating room for utility access, or opening avenues for emergency services to reach their destination. This type of clearing focuses on opening areas for necessary services and often includes removing trees from a lot if they are in the way.</p>
+          <p>Stump removal is also an important facet of lot clearing. Trees that are left as stumps can affect property use and create future foundation or drainage problems. It can also impact usability and curb appeal.</p>
+          <p><a href="/land-grading-central-texas/" class="link-cta">Land grading</a> is another aspect of lot clearing that can involve leveling land, adding slopes, excavating drainage paths, and even creating irrigation paths for crops and homesites.</p>
+
+          <h2>Considerations for Residential Lot Clearing</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <p>Residential lot clearing can be small-scale neighborhood prep or larger acreage work. Regardless of size, the primary focus is preparing for foundations while preventing erosion and drainage issues.</p>
+          <p>After trees and debris are removed, land should be graded and leveled so it is sloped correctly. This helps avoid major costs in the future due to flooding or foundation failure.</p>
+
+          <h2>Commercial Lot Clearing for Businesses</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <p>Commercial lot clearing typically includes construction site preparation with the expectation of future buildings or infrastructure. Surveying, deep-dive soil analysis, and grading and leveling are often part of this process to ensure the site is truly build-ready.</p>
+          <p>If you need full-service support, review our <a href="/land-clearing-services-central-texas/" class="link-cta">land clearing services in Central Texas</a> or <a href="/contact-us/" class="link-cta">contact us</a> for project scoping.</p>
+        </article>
+
+        <ServiceSidebar
+          galleryImage={galleryThumb}
+          galleryAlt="Lot clearing and grading equipment operating on a prepared job site"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="service-bottom-cta">
+    <div class="container-standard service-bottom-cta-inner">
+      <div>
+        <h2>Get a Free Estimate for Lot Clearing Services in Central Texas Today</h2>
+        <p>CTX Land Clearing and Forestry Mulching offers competitive rates for residential and commercial lot clearing services in the Central Texas area. Get a free estimate for your lot clearing services today.</p>
+      </div>
+      <a href="/contact-us/" class="btn-primary" data-track="service_cta_click" data-label="Lot Clearing Bottom CTA">Get Your Free Estimate</a>
+    </div>
+  </section>
+</BaseLayout>

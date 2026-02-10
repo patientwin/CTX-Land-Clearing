@@ -1,0 +1,43 @@
+---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { company } from '@/data/site';
+
+const { galleryImage, galleryAlt } = Astro.props as {
+  galleryImage: ImageMetadata;
+  galleryAlt: string;
+};
+---
+<aside class="service-sidebar" aria-label="Service page sidebar">
+  <section class="service-widget">
+    <h3>Reach Us</h3>
+    <ul>
+      <li><span class="dot" aria-hidden="true"></span>Mon - Sat: 8:00am - 6:00pm</li>
+      <li><span class="dot" aria-hidden="true"></span>Tel: <a href={`tel:${company.phoneHref}`} data-track="call_click">{company.phone}</a></li>
+    </ul>
+  </section>
+
+  <section class="service-widget">
+    <h3>Our Gallery</h3>
+    <Picture
+      src={galleryImage}
+      alt={galleryAlt}
+      formats={['avif', 'webp']}
+      widths={[480, 720]}
+      sizes="(min-width: 1024px) 24vw, (min-width: 768px) 32vw, 100vw"
+      loading="lazy"
+      decoding="async"
+      class="service-sidebar-image"
+    />
+  </section>
+
+  <section class="service-widget">
+    <h3>Our Social Media</h3>
+    <ul>
+      <li><span class="dot" aria-hidden="true"></span><a href="https://www.facebook.com/CTX-Land-Clearing-and-Forestry-Mulching-101605442531643" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+      <li><span class="dot" aria-hidden="true"></span><a href="https://www.instagram.com/ctxlandclearing" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+      <li><span class="dot" aria-hidden="true"></span><a href="https://www.youtube.com/channel/UCH8nL1t2YOdsmuhE7mBqMlw" target="_blank" rel="noopener noreferrer">Youtube</a></li>
+      <li><span class="dot" aria-hidden="true"></span><a href="https://x.com/ctxlandclearing" target="_blank" rel="noopener noreferrer">X / Twitter</a></li>
+    </ul>
+  </section>
+</aside>

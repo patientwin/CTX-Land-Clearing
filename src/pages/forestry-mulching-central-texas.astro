@@ -1,0 +1,101 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import ServiceSidebar from '@/components/ServiceSidebar.astro';
+import { serviceSchema } from '@/utils/schema';
+import heroBg from '@/assets/hero-bg.jpeg';
+import rightOfWayThumb from '@/assets/right-of-way-clearing-thumbnail.jpeg';
+import treeStumpThumb from '@/assets/tree-stump-removal-thumbnail.jpeg';
+
+const seo = {
+  title: 'Forestry Mulching Central Texas | CTX Land Clearing',
+  description: 'Forestry mulching Central Texas services that reduce brush, preserve topsoil, and improve access for Austin and surrounding properties.',
+  path: '/forestry-mulching-central-texas/'
+};
+---
+<BaseLayout seo={seo} schema={serviceSchema('Forestry Mulching Central Texas', seo.description, 'https://staging.ctxlandclearing.local/forestry-mulching-central-texas/')}>
+  <section class="service-hero">
+    <Picture
+      src={heroBg}
+      alt=""
+      formats={['avif', 'webp']}
+      widths={[960, 1280, 1600]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      class="service-hero-image"
+    />
+    <div class="service-hero-overlay" aria-hidden="true"></div>
+    <div class="container-standard service-hero-inner">
+      <h1>CTX Land Clearing and Forestry Mulching</h1>
+    </div>
+  </section>
+
+  <section class="section-standard service-main">
+    <div class="container-standard">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services/' }, { label: 'Forestry Mulching Central Texas', href: '/forestry-mulching-central-texas/' }]} />
+      <div class="service-content-grid mt-4">
+        <article class="service-content">
+          <h2>Forestry Mulching Central Texas</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <p>Forestry mulching is one of the most efficient methods for brush, cedar, and overgrowth management in Central Texas. Unlike full scrape-and-haul methods, forestry mulching processes vegetation on-site into mulch that can be distributed across the ground.</p>
+          <p>The process is practical and environmentally conservative for many properties because it preserves more topsoil, reduces haul-away cycles, and improves access planning for future projects.</p>
+
+          <Picture
+            src={rightOfWayThumb}
+            alt="Forestry mulching access lane in Central Texas with reduced brush and cleaner visibility"
+            formats={['avif', 'webp']}
+            widths={[640, 960, 1280]}
+            sizes="(min-width: 768px) 68vw, 100vw"
+            loading="lazy"
+            decoding="async"
+            class="service-main-image"
+          />
+
+          <h2>What Are the Benefits of Forestry Mulching in Austin, TX</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <p>Forestry mulching offers a practical way to clear overgrowth while maintaining a cleaner project footprint. For many properties in Austin and nearby communities, this method balances speed, cost, and usability.</p>
+          <ul class="list-disc pl-6">
+            <li>Reduced disturbance compared to full haul-away clearing</li>
+            <li>Improved topsoil coverage and runoff control</li>
+            <li>Faster access restoration for ranch and residential land</li>
+            <li>Lower clean-up complexity on many job scopes</li>
+          </ul>
+          <p>Because vegetation is processed into mulch, the result can support land management goals while keeping projects moving efficiently. Forestry mulching is frequently paired with <a href="/lot-clearing-central-texas/" class="link-cta">lot clearing services</a> or <a href="/land-grading-central-texas/" class="link-cta">land grading support</a> when additional prep is needed.</p>
+
+          <h2>How to Pick the Right Forestry Clearing Contractor</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <p>Choosing a forestry mulching contractor should include more than comparing price. You want a team that understands local terrain, communicates clearly, and can match machine strategy to the exact scope of work.</p>
+          <ul class="list-disc pl-6">
+            <li>Verify project-specific equipment and operator experience</li>
+            <li>Ask how access routes and finishing details are planned</li>
+            <li>Confirm whether additional services are available if scope expands</li>
+            <li>Request a clear estimate with expected project phases</li>
+          </ul>
+          <p>If you need full-service support, our team also provides <a href="/land-clearing-services-central-texas/" class="link-cta">land clearing services in Central Texas</a> and integrated grading support for projects that require complete site readiness.</p>
+
+          <h2>The Brush Clearing Process</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <p>Brush and undergrowth clearing often begins with a site walk and access review. Once target zones are identified, equipment is selected based on vegetation density, terrain, and final property goals. In many projects, the first pass opens access and improves visibility before finish cleanup work.</p>
+          <p>For properties requiring more than selective mulching, we can coordinate next steps including right-of-way expansion and prep for construction. Request details through <a href="/contact-us/" class="link-cta">contact us</a> and we will help map the right project sequence.</p>
+        </article>
+
+        <ServiceSidebar
+          galleryImage={treeStumpThumb}
+          galleryAlt="Tracked skid steer and support equipment staged for forestry mulching operations"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="service-bottom-cta">
+    <div class="container-standard service-bottom-cta-inner">
+      <div>
+        <h2>Get a Free Estimate for Forestry Mulching Services in Central Texas TODAY</h2>
+        <p>CTX Land Clearing and Forestry Mulching offers competitive rates for selective brush clearing, forestry mulching, and lot-ready support in the Central Texas area.</p>
+      </div>
+      <a href="/contact-us/" class="btn-primary" data-track="service_cta_click" data-label="Forestry Bottom CTA">Get Your Free Estimate</a>
+    </div>
+  </section>
+</BaseLayout>

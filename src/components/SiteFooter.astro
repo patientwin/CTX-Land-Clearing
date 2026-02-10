@@ -1,0 +1,84 @@
+---
+import { company } from '@/data/site';
+---
+<footer class="site-footer text-white">
+  <div class="container-standard py-12">
+    <div class="grid gap-8 border-b border-white/15 pb-10 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
+      <section>
+        <h2 class="font-[var(--font-display)] text-3xl uppercase leading-tight text-white md:text-4xl">{company.shortName}<br />and Forestry Mulching</h2>
+      </section>
+      <section class="flex gap-3">
+        <a href={`tel:${company.phoneHref}`} class="mt-0.5 text-brand-red" data-track="call_click" aria-label={`Call ${company.phone}`}>
+          <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.6.6 4 .6.7 0 1.2.5 1.2 1.2V21c0 .7-.5 1.2-1.2 1.2C10.9 22.2 1.8 13.1 1.8 1.8 1.8 1.1 2.3.6 3 .6h4.5c.7 0 1.2.5 1.2 1.2 0 1.4.2 2.7.6 4 .1.4 0 .9-.3 1.2z"/></svg>
+        </a>
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.08em] text-brand-red">Phone</p>
+          <a href={`tel:${company.phoneHref}`} class="mt-1 block text-xl text-white hover:text-brand-accent" data-track="call_click">{company.phone}</a>
+        </div>
+      </section>
+      <section class="flex gap-3">
+        <a href="/contact-us/" class="mt-0.5 text-brand-red" aria-label="Go to contact page">
+          <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current"><path d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5zm2.5-.5 7.5 5.3L19.5 5zm15.5 2-7.4 5.2a1 1 0 0 1-1.2 0L4 7v11.5c0 .3.2.5.5.5h15c.3 0 .5-.2.5-.5z"/></svg>
+        </a>
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.08em] text-brand-red">Mail</p>
+          <a href="/contact-us/" class="mt-1 block text-xl text-white hover:text-brand-accent">Contact Us</a>
+        </div>
+      </section>
+      <section class="flex gap-3">
+        <a href="https://maps.app.goo.gl/eRKdYf6Wv16bUh4eA" target="_blank" rel="noopener noreferrer" class="mt-0.5 text-brand-red" aria-label="View location map">
+          <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current"><path d="M12 2.3a7.4 7.4 0 0 0-7.4 7.4c0 5.5 7.4 12 7.4 12s7.4-6.5 7.4-12A7.4 7.4 0 0 0 12 2.3m0 10a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2"/></svg>
+        </a>
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.08em] text-brand-red">Location</p>
+          <a href="https://maps.app.goo.gl/eRKdYf6Wv16bUh4eA" target="_blank" rel="noopener noreferrer" class="mt-1 block text-xl text-white hover:text-brand-accent">{company.address.locality}, {company.address.region}</a>
+        </div>
+      </section>
+    </div>
+
+    <div class="grid gap-10 pt-10 md:grid-cols-[1.2fr_0.8fr_0.9fr_1.25fr]">
+      <section>
+        <h2 class="text-sm font-semibold uppercase tracking-[0.08em] text-white">About Us</h2>
+        <p class="mt-4 max-w-md text-base leading-8 text-white/90">
+          Headquartered in Austin, Texas but servicing all of Central Texas and the Hill Country,
+          CTX is your local professionals for fast, affordable forestry services. Offering free
+          estimates, fast services, and attention to detail at competitive prices.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-sm font-semibold uppercase tracking-[0.08em] text-white">Quick Links</h2>
+        <ul class="mt-4 space-y-3 text-xl text-white">
+          <li class="flex items-center gap-2"><span aria-hidden="true" class="text-brand-red">›</span><a href="/" class="text-white hover:text-brand-accent">Home</a></li>
+          <li class="flex items-center gap-2"><span aria-hidden="true" class="text-brand-red">›</span><a href="/about-us/" class="text-white hover:text-brand-accent">About us</a></li>
+          <li class="flex items-center gap-2"><span aria-hidden="true" class="text-brand-red">›</span><a href="/services/" class="text-white hover:text-brand-accent">Services</a></li>
+          <li class="flex items-center gap-2"><span aria-hidden="true" class="text-brand-red">›</span><a href="/faqs/" class="text-white hover:text-brand-accent">FAQs</a></li>
+          <li class="flex items-center gap-2"><span aria-hidden="true" class="text-brand-red">›</span><a href="/contact-us/" class="text-white hover:text-brand-accent">Contact us</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-sm font-semibold uppercase tracking-[0.08em] text-white">Our Services</h2>
+        <ul class="mt-4 space-y-3 text-xl text-white">
+          <li class="flex items-center gap-2"><span aria-hidden="true" class="text-brand-red">›</span><a href="/forestry-mulching-central-texas/" class="text-white hover:text-brand-accent">Forestry Mulching Central Texas</a></li>
+          <li class="flex items-center gap-2"><span aria-hidden="true" class="text-brand-red">›</span><a href="/land-clearing-services-central-texas/" class="text-white hover:text-brand-accent">Land Clearing Services Central Texas</a></li>
+          <li class="flex items-center gap-2"><span aria-hidden="true" class="text-brand-red">›</span><a href="/land-grading-central-texas/" class="text-white hover:text-brand-accent">Land Grading Central Texas</a></li>
+          <li class="flex items-center gap-2"><span aria-hidden="true" class="text-brand-red">›</span><a href="/lot-clearing-central-texas/" class="text-white hover:text-brand-accent">Lot Clearing Austin Texas</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-sm font-semibold uppercase tracking-[0.08em] text-white">Map</h2>
+        <div class="mt-4 overflow-hidden rounded-xl border border-white/20">
+          <iframe
+            title="CTX Land Clearing service area map"
+            src="https://www.google.com/maps?q=Austin,Texas&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="h-80 w-full"
+          ></iframe>
+        </div>
+      </section>
+    </div>
+  </div>
+</footer>

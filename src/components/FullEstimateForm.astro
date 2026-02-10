@@ -1,0 +1,58 @@
+<form name="full-estimate" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="bot_field" data-estimate-form="true" data-track-form="true" class="form-shell space-y-4 p-6" novalidate>
+  <input type="hidden" name="form-name" value="full-estimate" />
+  <input type="hidden" name="utm_source" value="" />
+  <input type="hidden" name="utm_medium" value="" />
+  <input type="hidden" name="utm_campaign" value="" />
+  <input type="hidden" name="utm_term" value="" />
+  <input type="hidden" name="utm_content" value="" />
+  <input type="hidden" name="landing_path" value="" />
+  <p class="hidden"><label>Leave this empty <input name="bot_field" /></label></p>
+
+  <h2 class="font-[var(--font-display)] text-2xl uppercase text-brand-dark">Full Estimate Form</h2>
+  <p class="text-xs text-[var(--color-muted)]">Share full project details for a faster scope response.</p>
+  <div>
+    <label for="full-name" class="field-label">Name*</label>
+    <input id="full-name" class="form-control" name="name" required autocomplete="name" />
+    <p class="field-error" data-error-for="name" aria-live="polite"></p>
+  </div>
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div>
+      <label for="full-phone" class="field-label">Phone*</label>
+      <input id="full-phone" class="form-control" name="phone" type="tel" required autocomplete="tel" inputmode="tel" />
+      <p class="field-error" data-error-for="phone" aria-live="polite"></p>
+    </div>
+    <div>
+      <label for="full-email" class="field-label">Email*</label>
+      <input id="full-email" class="form-control" name="email" type="email" required autocomplete="email" />
+      <p class="field-error" data-error-for="email" aria-live="polite"></p>
+    </div>
+  </div>
+  <div>
+    <label for="full-address" class="field-label">Project Address*</label>
+    <input id="full-address" class="form-control" name="project_address" required autocomplete="street-address" />
+    <p class="field-error" data-error-for="project_address" aria-live="polite"></p>
+  </div>
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div>
+      <label for="full-service" class="field-label">Service Needed*</label>
+      <select id="full-service" class="form-control" name="service" required>
+        <option value="">Select one</option>
+        <option>Land Clearing</option>
+        <option>Forestry Mulching</option>
+        <option>Land Grading</option>
+        <option>Multiple Services</option>
+      </select>
+      <p class="field-error" data-error-for="service" aria-live="polite"></p>
+    </div>
+    <div>
+      <label for="full-acreage" class="field-label">Estimated Acreage</label>
+      <input id="full-acreage" class="form-control" name="acreage" placeholder="Example: 2 acres" />
+    </div>
+  </div>
+  <div>
+    <label for="full-message" class="field-label">Project Details*</label>
+    <textarea id="full-message" class="form-control min-h-32" name="message" required placeholder="Timeline, current vegetation, access notes"></textarea>
+    <p class="field-error" data-error-for="message" aria-live="polite"></p>
+  </div>
+  <button class="btn-primary w-full" type="submit">Submit Estimate Request</button>
+</form>

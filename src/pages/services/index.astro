@@ -1,0 +1,152 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import ServiceCard from '@/components/ServiceCard.astro';
+import FAQ from '@/components/FAQ.astro';
+import { faqSchema } from '@/utils/schema';
+import { company, migrationInputs } from '@/data/site';
+import heroBg from '@/assets/hero-bg.jpeg';
+import landClearingThumb from '@/assets/land-clearning-thumbnail.jpeg';
+import lotClearingThumb from '@/assets/lot-clearing-thumbnail.jpeg';
+import brushRemovalThumb from '@/assets/brush-removal-thumbnail.jpeg';
+import rightOfWayThumb from '@/assets/right-of-way-clearing-thumbnail.jpeg';
+import gradingLevelingImage from '@/assets/grading-and-leveling.jpeg';
+import stumpRemovalThumb from '@/assets/tree-stump-removal-thumbnail.jpeg';
+
+const seo = {
+  title: 'Land Clearing Services in Austin and Central Texas | CTX',
+  description: 'Explore land clearing, lot clearing, forestry mulching, and land grading services in Austin and Central Texas. Request a free estimate from CTX.',
+  path: '/services/'
+};
+
+const serviceHubItems = [
+  {
+    title: 'Land Clearing Austin, TX',
+    excerpt: 'Full and selective land clearing for homesites, ranch properties, and development access.',
+    href: '/land-clearing-services-central-texas/',
+    image: landClearingThumb,
+    imageAlt: 'Land clearing outcome in Austin with improved lot access'
+  },
+  {
+    title: 'Forestry Mulching Austin, TX',
+    excerpt: 'Low-disturbance brush reduction that preserves practical ground coverage.',
+    href: '/forestry-mulching-central-texas/',
+    image: brushRemovalThumb,
+    imageAlt: 'Forestry mulcher reducing brush density on Central Texas property'
+  },
+  {
+    title: 'Lot Clearing Austin Texas',
+    excerpt: 'Targeted lot prep for residential and commercial project planning.',
+    href: '/lot-clearing-central-texas/',
+    image: lotClearingThumb,
+    imageAlt: 'Lot clearing project with open pathways and ready access'
+  },
+  {
+    title: 'Land Grading Central Texas',
+    excerpt: 'Grade and leveling support to improve drainage and build-readiness.',
+    href: '/land-grading-central-texas/',
+    image: gradingLevelingImage,
+    imageAlt: 'Land grading and leveling work for site preparation'
+  },
+  {
+    title: 'Forestry Mulching Central Texas',
+    excerpt: 'Cedar and brush management for long-term property usability.',
+    href: '/forestry-mulching-central-texas/',
+    image: rightOfWayThumb,
+    imageAlt: 'Mulched right-of-way lane improving access in Central Texas'
+  },
+  {
+    title: 'Land Clearing Services Central Texas',
+    excerpt: 'Complete service overview for multi-phase clearing and prep projects.',
+    href: '/land-clearing-services-central-texas/',
+    image: stumpRemovalThumb,
+    imageAlt: 'Skid steer and support equipment staged for clearing operations'
+  }
+];
+
+const faqItems = [
+  {
+    q: 'Which service should I start with for an overgrown property?',
+    a: 'Most projects begin with land clearing or forestry mulching to restore access and visibility. Grading is often added when site prep or drainage control is needed.'
+  },
+  {
+    q: 'Do you service areas outside Austin?',
+    a: 'Yes. CTX serves Austin and nearby Central Texas communities including Round Rock, Cedar Park, Leander, Dripping Springs, Lakeway, Buda, and Kyle.'
+  },
+  {
+    q: 'Can I request one estimate for multiple services?',
+    a: 'Yes. Use the estimate form and include all requested services, acreage, and timeline details so we can scope your project efficiently.'
+  }
+];
+
+const serviceHubSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${migrationInputs.newSiteDomain}/services/#collection`,
+  url: `${migrationInputs.newSiteDomain}/services/`,
+  name: 'Land Clearing Services in Austin and Central Texas',
+  description: seo.description,
+  isPartOf: {
+    '@type': 'WebSite',
+    url: migrationInputs.newSiteDomain
+  },
+  about: {
+    '@type': 'LocalBusiness',
+    '@id': `${migrationInputs.newSiteDomain}/#localbusiness`,
+    name: company.name
+  },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: serviceHubItems.map((service, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: service.title,
+      url: `${migrationInputs.newSiteDomain}${service.href}`
+    }))
+  }
+};
+---
+<BaseLayout seo={seo} schema={[serviceHubSchema, faqSchema(faqItems)]}>
+  <section class="service-hero">
+    <Picture
+      src={heroBg}
+      alt=""
+      formats={['avif', 'webp']}
+      widths={[960, 1280, 1600]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      class="service-hero-image"
+    />
+    <div class="service-hero-overlay" aria-hidden="true"></div>
+    <div class="container-standard service-hero-inner">
+      <h1>Land Clearing Services in Austin and Central Texas</h1>
+    </div>
+  </section>
+
+  <section class="section-standard service-main">
+    <div class="container-standard">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services/' }]} />
+      <div class="service-content mt-4">
+        <h2>Choose the Right Service for Your Property Goals</h2>
+        <div class="service-divider" aria-hidden="true"></div>
+        <p>Use this services hub to compare land clearing, forestry mulching, lot prep, and grading options. Each page outlines scope, use cases, and how projects are typically sequenced across Central Texas properties.</p>
+        <p>If your project needs more than one service, request a single estimate and we will help map the right order of work.</p>
+      </div>
+
+      <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {serviceHubItems.map((service) => <ServiceCard {...service} />)}
+      </div>
+
+      <div class="service-content mt-10">
+        <h2>Service Areas and Next Steps</h2>
+        <div class="service-divider" aria-hidden="true"></div>
+        <p>Primary coverage includes Austin and nearby Central Texas communities. For area-specific details, visit <a href="/service-areas/" class="link-cta">Service Areas</a>.</p>
+        <p>Ready to move forward? Submit details on our <a href="/contact-us/" class="link-cta">Contact Us</a> page or call <a href={`tel:${company.phoneHref}`} class="link-cta" data-track="call_click">{company.phone}</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} />
+</BaseLayout>

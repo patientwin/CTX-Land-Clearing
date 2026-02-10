@@ -1,0 +1,73 @@
+---
+const {
+  title = 'Quick Estimate',
+  buttonLabel = 'Get Free Estimate',
+  heroMode = false
+} = Astro.props as {
+  title?: string;
+  buttonLabel?: string;
+  heroMode?: boolean;
+};
+const labelClass = heroMode ? 'sr-only' : 'field-label';
+---
+<form
+  name="quick-estimate"
+  method="POST"
+  action="/thank-you/"
+  data-netlify="true"
+  netlify-honeypot="bot_field"
+  data-estimate-form="true"
+  data-track-form="true"
+  class={`form-shell space-y-3 p-6 ${heroMode ? 'hero-quick-form' : ''}`}
+  novalidate
+>
+  <input type="hidden" name="form-name" value="quick-estimate" />
+  <input type="hidden" name="utm_source" value="" />
+  <input type="hidden" name="utm_medium" value="" />
+  <input type="hidden" name="utm_campaign" value="" />
+  <input type="hidden" name="utm_term" value="" />
+  <input type="hidden" name="utm_content" value="" />
+  <input type="hidden" name="landing_path" value="" />
+  <p class="hidden"><label>Leave this empty <input name="bot_field" /></label></p>
+
+  <h2 class="font-[var(--font-display)] text-2xl uppercase text-brand-dark">{title}</h2>
+  <p class={`text-xs text-[var(--color-muted)] ${heroMode ? 'hidden' : ''}`}>Takes about 60 seconds.</p>
+  <div class={heroMode ? 'hero-name-row' : ''}>
+    <label for="quick-name" class={labelClass}>Name*</label>
+    <input id="quick-name" class="form-control" name="name" required autocomplete="name" placeholder="Name" />
+    {heroMode && <span class="hero-input-icon" aria-hidden="true">...</span>}
+    <p class="field-error" data-error-for="name" aria-live="polite"></p>
+  </div>
+  <div class={heroMode ? 'quick-form-duo' : 'space-y-3'}>
+    <div>
+      <label for="quick-email" class={labelClass}>Email*</label>
+      <input id="quick-email" class="form-control" name="email" type="email" required autocomplete="email" placeholder="Email" />
+      <p class="field-error" data-error-for="email" aria-live="polite"></p>
+    </div>
+    <div>
+      <label for="quick-phone" class={labelClass}>Phone*</label>
+      <input id="quick-phone" class="form-control" name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="Phone" />
+      <p class="field-error" data-error-for="phone" aria-live="polite"></p>
+    </div>
+  </div>
+  <div>
+    <label for="quick-service" class={labelClass}>Service Needed*</label>
+    <select id="quick-service" class="form-control" name="service" required>
+      <option value="">How can we help you?</option>
+      <option>Land Clearing</option>
+      <option>Forestry Mulching</option>
+      <option>Land Grading</option>
+      <option>Multiple Services</option>
+    </select>
+    <p class="field-error" data-error-for="service" aria-live="polite"></p>
+  </div>
+  <div>
+    <label for="quick-size" class={labelClass}>Project Size</label>
+    <input id="quick-size" class="form-control" name="project_size" placeholder="Size of Project: 5 acres or 1500 ft long" />
+  </div>
+  <div>
+    <label for="quick-message" class={labelClass}>Project Notes</label>
+    <textarea id="quick-message" class="form-control min-h-24" name="message" placeholder="Project Details: 23 acres of ranch land that we want cleared. Will be used for horses, so we want to leave some trees, but underbrush needs to be mulched and most trees removed."></textarea>
+  </div>
+  <button class="btn-primary w-full uppercase" type="submit">{buttonLabel}</button>
+</form>

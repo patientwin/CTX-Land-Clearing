@@ -1,0 +1,19 @@
+---
+import type { StatItem } from '@/data/stats';
+
+const { items } = Astro.props as { items: StatItem[] };
+---
+<section class="section-standard stats-section pt-2 md:pt-4" aria-label="Core metrics">
+  <div class="container-standard">
+    <ul class="stats-rollover-grid">
+      {items.map((item) => (
+        <li>
+          <article class="stat-circle" tabindex="0" aria-label={`${item.value} ${item.label}`}>
+            <p class="stat-value" data-countup-value={item.value}>{item.value}</p>
+            <p class="stat-label">{item.label}</p>
+          </article>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

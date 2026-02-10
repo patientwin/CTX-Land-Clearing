@@ -1,0 +1,34 @@
+---
+import reviews from '@/data/googleReviews.json';
+
+const { googleReviewsUrl = 'https://www.google.com/maps/search/?api=1&query=CTX+Land+Clearing+Austin+TX' } = Astro.props as {
+  googleReviewsUrl?: string;
+};
+
+const stars = (rating: number) => '★'.repeat(Math.max(0, Math.min(5, Math.round(rating))));
+---
+<section class="reviews-band" aria-labelledby="google-reviews-heading">
+  <div class="container-standard">
+    <div class="reviews-shell">
+      <div class="reviews-header-row">
+        <div>
+          <p class="reviews-kicker">Google Reviews</p>
+          <h2 id="google-reviews-heading" class="reviews-title">Real feedback from Central Texas property owners</h2>
+        </div>
+        <a href={googleReviewsUrl} class="btn-primary reviews-link" target="_blank" rel="noopener noreferrer" data-track="service_cta_click" data-label="Google Reviews Click">Read All Reviews</a>
+      </div>
+
+      <div class="reviews-grid">
+        {reviews.map((review) => (
+          <article class="review-card">
+            <p class="review-author">{review.authorName}</p>
+            <p class="review-guide">Local Guide • {review.reviewCount}</p>
+            <p class="review-meta">{stars(review.rating)} <span>{review.relativeTime}</span></p>
+            <p class="review-text">{review.text}</p>
+          </article>
+        ))}
+      </div>
+      <p class="reviews-note">Snapshot reviews shown for prototype mode. Use “Read All Reviews” for full live profile.</p>
+    </div>
+  </div>
+</section>

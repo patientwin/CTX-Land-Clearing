@@ -1,0 +1,19 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const seo = {
+  title: 'Thank You | CTX Land Clearing',
+  description: 'Thank you for contacting CTX Land Clearing and Forestry Mulching.',
+  path: '/thank-you/',
+  noindex: true
+};
+---
+<BaseLayout seo={seo}>
+  <section class="section-standard">
+    <div class="container-standard max-w-2xl text-center">
+      <h1 class="font-[var(--font-display)] text-5xl uppercase">Thank You</h1>
+      <p class="mt-3 text-sm text-black/75">Your request has been submitted successfully. We will contact you shortly.</p>
+      <a href="/" class="btn-primary mt-6">Return Home</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,23 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { company } from '@/data/site';
+
+const seo = {
+  title: 'Service Areas | CTX Land Clearing Austin TX',
+  description: 'Service areas for CTX Land Clearing and Forestry Mulching in Austin and nearby Central Texas cities.',
+  path: '/service-areas/'
+};
+---
+<BaseLayout seo={seo}>
+  <section class="section-standard">
+    <div class="container-standard">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Service Areas', href: '/service-areas/' }]} />
+      <h1 class="mt-4 font-[var(--font-display)] text-5xl uppercase">Service Areas</h1>
+      <p class="mt-3 max-w-2xl text-sm text-black/75">Primary coverage includes Austin and surrounding communities across Central Texas.</p>
+      <ul class="mt-6 grid gap-3 sm:grid-cols-2 md:grid-cols-4">
+        {company.serviceAreas.map((city) => <li class="card py-3 text-center text-sm font-semibold">{city}, TX</li>)}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,84 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import ServiceSidebar from '@/components/ServiceSidebar.astro';
+import { serviceSchema } from '@/utils/schema';
+import heroBg from '@/assets/hero-bg.jpeg';
+import landClearingThumb from '@/assets/land-clearning-thumbnail.jpeg';
+import galleryThumb from '@/assets/tree-stump-removal-thumbnail.jpeg';
+
+const seo = {
+  title: 'Land Grading Central Texas | CTX Land Clearing',
+  description: 'Land grading Central Texas services for site prep, drainage improvement, and build-ready surfaces in Austin and nearby communities.',
+  path: '/land-grading-central-texas/'
+};
+---
+<BaseLayout seo={seo} schema={serviceSchema('Land Grading Central Texas', seo.description, 'https://staging.ctxlandclearing.local/land-grading-central-texas/')}>
+  <section class="service-hero">
+    <Picture
+      src={heroBg}
+      alt=""
+      formats={['avif', 'webp']}
+      widths={[960, 1280, 1600]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      class="service-hero-image"
+    />
+    <div class="service-hero-overlay" aria-hidden="true"></div>
+    <div class="container-standard service-hero-inner">
+      <h1>CTX Land Clearing and Forestry Mulching</h1>
+    </div>
+  </section>
+
+  <section class="section-standard service-main">
+    <div class="container-standard">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services/' }, { label: 'Land Grading Central Texas', href: '/land-grading-central-texas/' }]} />
+      <div class="service-content-grid mt-4">
+        <article class="service-content">
+          <h2>Land Grading Central Texas</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <p>Land grading refers to reshaping or conforming land to meet a particular need. This can include adding slopes to improve drainage, making land level for projects such as new homes or additions, and correcting elevation for long-term usability.</p>
+          <p>While you can do grading with general clearing machinery, hiring a team with <a href="/land-clearing-services-central-texas/" class="link-cta">land clearing and site prep experience</a> is the better way to go. Grading projects require equipment, site evaluation, and practical local knowledge to avoid future water and access issues.</p>
+
+          <Picture
+            src={landClearingThumb}
+            alt="Large open lot in Central Texas prepared for grading and leveling work"
+            formats={['avif', 'webp']}
+            widths={[640, 960, 1280]}
+            sizes="(min-width: 768px) 68vw, 100vw"
+            loading="lazy"
+            decoding="async"
+            class="service-main-image"
+          />
+
+          <h2>The Austin Land Leveling and Grading Process</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <p>In Austin and across Central Texas, knowing how land is leveled or graded is a strong first step before building. Leveling often involves specialized equipment to move soil and adjust elevation to avoid ponding and erosion.</p>
+          <p>Grading can also involve earthmovers, tillers, and targeted attachments to reshape the ground. Unlike simply leveling, grading creates slopes and drainage flow paths that help direct water where it should go.</p>
+
+          <h2>Site Prep for Future Construction</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <p>Proper land grading can have a positive effect on future residential and commercial development. Before starting construction, grading helps ensure that your foundation remains stable and your plan can be built as intended.</p>
+          <p>Our team can assist with planning, slope review, and integrated clearing support so your site is ready for future construction. If you need a detailed scope, submit a request through our <a href="/contact-us/" class="link-cta">contact-us form</a>.</p>
+        </article>
+
+        <ServiceSidebar
+          galleryImage={galleryThumb}
+          galleryAlt="Tracked skid steer and attachments staged for land grading and site prep"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="service-bottom-cta">
+    <div class="container-standard service-bottom-cta-inner">
+      <div>
+        <h2>Get a Free Estimate for Land Grading Services in Central Texas Today</h2>
+        <p>CTX Land Clearing and Forestry Mulching offers competitive rates for grading, leveling, and construction site prep services in the Central Texas area.</p>
+      </div>
+      <a href="/contact-us/" class="btn-primary" data-track="service_cta_click" data-label="Land Grading Bottom CTA">Get Your Free Estimate</a>
+    </div>
+  </section>
+</BaseLayout>

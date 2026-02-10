@@ -1,0 +1,43 @@
+---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+type CardImage = string | ImageMetadata;
+
+const { title, excerpt, href, image, imageAlt } = Astro.props as {
+  title: string;
+  excerpt: string;
+  href: string;
+  image?: CardImage;
+  imageAlt?: string;
+};
+---
+<article class="card card-service">
+  <a href={href} class="service-card-link" data-track="service_cta_click" data-label={title} aria-label={`View ${title}`}>
+    {typeof image === 'string' && (
+      <img
+        src={image}
+        alt={imageAlt || title}
+        width="800"
+        height="600"
+        loading="lazy"
+        decoding="async"
+        class="h-44 w-full rounded-xl border border-black/10 object-cover"
+      />
+    )}
+    {typeof image !== 'string' && image && (
+      <Picture
+        src={image}
+        alt={imageAlt || title}
+        formats={['avif', 'webp']}
+        widths={[480, 720, 960]}
+        sizes="(min-width: 1024px) 31vw, (min-width: 768px) 46vw, 100vw"
+        loading="lazy"
+        class="h-44 w-full rounded-xl border border-black/10 object-cover"
+      />
+    )}
+    <h3 class="font-[var(--font-display)] text-2xl uppercase leading-tight text-brand-dark">{title}</h3>
+    <p class="text-sm text-[var(--color-muted)]">{excerpt}</p>
+    <span class="service-card-action" aria-hidden="true">View Service</span>
+  </a>
+</article>

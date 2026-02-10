@@ -1,0 +1,103 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import ServiceSidebar from '@/components/ServiceSidebar.astro';
+import { serviceSchema } from '@/utils/schema';
+import heroBg from '@/assets/hero-bg.jpeg';
+import landMainImage from '@/assets/land-clearning-thumbnail.jpeg';
+import galleryThumb from '@/assets/grading-and-leveling.jpeg';
+
+const seo = {
+  title: 'Land Clearing Services in Central Texas | CTX Land Clearing',
+  description: 'Land clearing services in Central Texas including lot clearing, forestry mulching, and grading support.',
+  path: '/land-clearing-services-central-texas/'
+};
+---
+<BaseLayout seo={seo} schema={serviceSchema('Land Clearing Services Central Texas', seo.description, 'https://staging.ctxlandclearing.local/land-clearing-services-central-texas/')}>
+  <section class="service-hero">
+    <Picture
+      src={heroBg}
+      alt=""
+      formats={['avif', 'webp']}
+      widths={[960, 1280, 1600]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      class="service-hero-image"
+    />
+    <div class="service-hero-overlay" aria-hidden="true"></div>
+    <div class="container-standard service-hero-inner">
+      <h1>CTX Land Clearing and Forestry Mulching</h1>
+    </div>
+  </section>
+
+  <section class="section-standard service-main">
+    <div class="container-standard">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services/' }, { label: 'Land Clearing Services Central Texas', href: '/land-clearing-services-central-texas/' }]} />
+      <div class="service-content-grid mt-4">
+        <article class="service-content">
+          <h2>Land Clearing Services Central Texas</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <p>Land clearing can involve tree and brush removal, lot preparation, and site access planning for future development. In Central Texas, projects often include cedar reduction, underbrush management, and grading support depending on property goals and end use.</p>
+          <p>Whether you need full lot preparation or selective clearing, our team aligns machinery and scope to your land conditions so work moves forward with less downtime and better outcomes.</p>
+
+          <Picture
+            src={landMainImage}
+            alt="Central Texas land clearing project with reduced brush and improved lot access"
+            formats={['avif', 'webp']}
+            widths={[640, 960, 1280]}
+            sizes="(min-width: 768px) 68vw, 100vw"
+            loading="lazy"
+            decoding="async"
+            class="service-main-image"
+          />
+
+          <h2>What to Know About Land Clearing in Austin Texas</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <p>Before starting a project, it helps to identify the primary objective. Common goals include opening land for development, improving property usability, creating safer access routes, and reducing long-term maintenance burdens.</p>
+          <ul class="list-disc pl-6">
+            <li>Property clearing for residential or commercial construction planning</li>
+            <li>Tree and brush management to improve visibility and access</li>
+            <li>Grading coordination to support drainage and site prep</li>
+          </ul>
+          <p>Land clearing can include right-of-way opening, stump handling, and selective tree removal. In many cases, it is paired with <a href="/land-grading-central-texas/" class="link-cta">land grading</a> or <a href="/forestry-mulching-central-texas/" class="link-cta">forestry mulching</a> to complete the project in fewer phases.</p>
+
+          <h2>Lot Clearing for Development</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <p>When preparing land for new residential or commercial work, clearing focuses on removing obstacles and making the property development-ready. This often includes debris removal, brush reduction, selective tree clearing, and rough grade support.</p>
+          <ul class="list-disc pl-6">
+            <li>Access and drive path clearing</li>
+            <li>Selective brush and stump removal</li>
+            <li>High-visibility and right-of-way openings</li>
+            <li>Coordinated prep for utilities and foundation planning</li>
+          </ul>
+          <p>If your project needs full planning support from initial scope through finish work, review our <a href="/lot-clearing-central-texas/" class="link-cta">lot clearing services</a> page for additional details.</p>
+
+          <h2>Land Clearing Services</h2>
+          <div class="service-divider" aria-hidden="true"></div>
+          <p><strong>Forestry Mulching:</strong> Selective brush reduction that processes vegetation on-site while preserving more topsoil.</p>
+          <p><strong>Tree Mulching:</strong> Targeted clearing for overgrowth zones where machine-based reduction improves access and safety.</p>
+          <p><strong>Sendero:</strong> Sendero lane clearing for ranches and larger properties that need reliable travel corridors.</p>
+          <p><strong>Tree Clearing:</strong> Focused tree removal where density limits construction, fencing, or long-term site use.</p>
+          <p><strong>Brush Clearing:</strong> Practical removal of underbrush and invasive overgrowth to restore property function.</p>
+        </article>
+
+        <ServiceSidebar
+          galleryImage={galleryThumb}
+          galleryAlt="Skid steer and attachments staged for land clearing and site prep"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="service-bottom-cta">
+    <div class="container-standard service-bottom-cta-inner">
+      <div>
+        <h2>Get a Free Estimate for Land Clearing Services in Central Texas Today</h2>
+        <p>CTX Land Clearing and Forestry Mulching offers competitive rates for lot clearing and land-clearing support across the Central Texas area. Get a free estimate for your next project today.</p>
+      </div>
+      <a href="/contact-us/" class="btn-primary" data-track="service_cta_click" data-label="Services Hub Bottom CTA">Get Your Free Estimate</a>
+    </div>
+  </section>
+</BaseLayout>

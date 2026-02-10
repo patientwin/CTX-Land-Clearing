@@ -1,0 +1,315 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import QuickEstimateForm from '@/components/QuickEstimateForm.astro';
+import ServiceCard from '@/components/ServiceCard.astro';
+import StatsRollover from '@/components/StatsRollover.astro';
+import GoogleReviewsBand from '@/components/GoogleReviewsBand.astro';
+import { localBusinessSchema } from '@/utils/schema';
+import { company } from '@/data/site';
+import { stats } from '@/data/stats';
+import heroBg from '@/assets/hero-bg.jpeg';
+import whoIsCtxImage from '@/assets/who-is-ctx.png';
+import texasSilouette from '@/assets/texas-silouette.jpg';
+import landClearingThumb from '@/assets/land-clearning-thumbnail.jpeg';
+import lotClearingThumb from '@/assets/lot-clearing-thumbnail.jpeg';
+import brushRemovalThumb from '@/assets/brush-removal-thumbnail.jpeg';
+import rightOfWayThumb from '@/assets/right-of-way-clearing-thumbnail.jpeg';
+import gradingLevelingImage from '@/assets/grading-and-leveling.jpeg';
+import stumpRemovalThumb from '@/assets/tree-stump-removal-thumbnail.jpeg';
+import constructionSitePrepImage from '@/assets/construction-site-prep.jpeg';
+import benefitsImage1 from '@/assets/benefits-of-working-with-us-1.jpeg';
+import benefitsImage2 from '@/assets/benefits-of-working-with-us-2.jpeg';
+
+const seo = {
+  title: 'Land Clearing and Forestry Mulching in Austin, TX | CTX Land Clearing',
+  description: 'Land Clearing and Forestry Mulching in Austin, TX. Let us clear your lot quickly and effectively, leaving all topsoil in place. Call (512) 361-4887 or request a free estimate.',
+  path: '/'
+};
+
+const homepageServices = [
+  {
+    title: 'Land Clearing Austin, TX',
+    excerpt: 'Clear overgrowth quickly while preserving usable topsoil and access.',
+    href: '/land-clearing-services-central-texas/',
+    image: landClearingThumb,
+    imageAlt: 'Land clearing project in Austin prepared for next construction phase'
+  },
+  {
+    title: 'Lot Clearing Services',
+    excerpt: 'Comprehensive and customizable lot clearing for residential and commercial properties.',
+    href: '/lot-clearing-central-texas/',
+    image: lotClearingThumb,
+    imageAlt: 'Lot clearing pass through brush-dense Central Texas property'
+  },
+  {
+    title: 'Forestry Mulching Austin, TX',
+    excerpt: 'Selective brush reduction that leaves topsoil in place and lowers hauling needs.',
+    href: '/forestry-mulching-central-texas/',
+    image: brushRemovalThumb,
+    imageAlt: 'Forestry mulching equipment clearing cedar and brush'
+  },
+  {
+    title: 'Forestry Mulching Central Texas',
+    excerpt: 'Efficient mulching support for access improvement and manageable land maintenance.',
+    href: '/forestry-mulching-central-texas/',
+    image: rightOfWayThumb,
+    imageAlt: 'Mulched terrain with preserved tree lines in Central Texas'
+  },
+  {
+    title: 'Land Grading Services',
+    excerpt: 'Grade support to improve drainage, stability, and project-readiness.',
+    href: '/land-grading-central-texas/',
+    image: gradingLevelingImage,
+    imageAlt: 'Land grading outcome showing smoother and more usable ground levels'
+  },
+  {
+    title: 'Land Clearing Services Hub',
+    excerpt: 'Review the full Central Texas service mix and choose the right path.',
+    href: '/land-clearing-services-central-texas/',
+    image: stumpRemovalThumb,
+    imageAlt: 'Service overview image showing cleared homesite and lane access'
+  }
+];
+
+const faqCards = [
+  {
+    q: 'What is the secret to land clearing without major soil damage?',
+    a: 'Most people do not realize land clearing does not have to scrape all topsoil away. The process should remove unwanted growth while preserving soil structure where possible.'
+  },
+  {
+    q: 'How fast can I get an estimate?',
+    a: 'Use the quick estimate form or call (512) 361-4887. Most estimate requests receive same-business-day follow-up.'
+  },
+  {
+    q: 'Do you work only in Austin?',
+    a: 'Austin is the primary area, with projects also scheduled across nearby Central Texas communities.'
+  },
+  {
+    q: 'Which service should I choose first?',
+    a: 'If access and overgrowth are the main issue, land clearing or forestry mulching is usually the first step. Grading is often a follow-up for site prep quality.'
+  },
+  {
+    q: 'Can I get a free estimate?',
+    a: 'Yes. Use the estimate form or call (512) 361-4887 and our team will gather your project details, timeline, and service needs before providing next-step guidance.'
+  }
+];
+---
+<BaseLayout seo={seo} schema={localBusinessSchema()}>
+  <section class="section-hero">
+    <div class="hero-shell">
+        <div class="hero-media" aria-hidden="true">
+          <Picture
+            src={heroBg}
+            alt=""
+            formats={['avif', 'webp']}
+            widths={[960, 1280, 1600, 1920]}
+            sizes="100vw"
+            loading="eager"
+            fetchpriority="high"
+            class="h-full w-full object-cover object-[68%_40%]"
+          />
+        </div>
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-content">
+          <div class="hero-copy">
+            <h1 class="hero-title">Land Clearing and Forestry Mulching in Austin, TX</h1>
+          </div>
+          <aside id="quick-estimate" class="hero-form-card">
+            <QuickEstimateForm title="Get a Free Estimate" buttonLabel="Submit" heroMode={true} />
+          </aside>
+        </div>
+      </div>
+  </section>
+
+  <section aria-label="Immediate call to action" class="cta-band cta-band-primary hidden py-5 text-white md:block">
+    <div class="container-standard flex items-center justify-between gap-3 md:flex-nowrap">
+      <p class="min-w-0 text-sm font-semibold uppercase tracking-wide">Contact us to schedule your free consultation.</p>
+      <a href={`tel:${company.phoneHref}`} class="btn shrink-0 bg-white px-5 py-2 text-brand-dark" data-track="call_click">{company.phone}</a>
+    </div>
+  </section>
+
+  <section class="section-standard who-ctx-section" aria-labelledby="who-is-ctx" data-who-ctx-section>
+    <div class="container-standard who-ctx-inner">
+      <div class="who-ctx-bg-shape" aria-hidden="true">
+        <Picture
+          src={texasSilouette}
+          alt=""
+          formats={['avif', 'webp']}
+          widths={[640, 960, 1280]}
+          sizes="(min-width: 768px) 42vw, 74vw"
+          loading="lazy"
+          decoding="async"
+          class="who-ctx-silhouette"
+        />
+      </div>
+      <div class="who-ctx-machine-wrap" aria-hidden="true" data-who-machine>
+        <Picture
+          src={whoIsCtxImage}
+          alt=""
+          formats={['avif', 'webp']}
+          widths={[640, 960, 1280]}
+          sizes="(min-width: 768px) 45vw, 88vw"
+          loading="lazy"
+          decoding="async"
+          class="who-ctx-machine"
+        />
+      </div>
+      <article class="who-ctx-copy">
+        <h2 id="who-is-ctx" class="who-ctx-title">Who is CTX?</h2>
+        <div class="who-ctx-divider" aria-hidden="true"></div>
+        <p class="mt-7 text-base leading-10 text-[var(--color-muted)]">Established in 2020, we've been blessed to work hand in hand with the great people of the Central TX area to handle all of their land clearing and forestry mulching needs. Owned & operated by Brooks Norman, our company is fully insured and our team is filled to the brim with industry veterans whose only aim is to get your job done right the first time, every time.</p>
+      </article>
+    </div>
+  </section>
+
+  <GoogleReviewsBand />
+
+  <section class="section-standard benefits-section section-polish" aria-labelledby="secret-to-clearing">
+    <div class="container-standard max-w-5xl text-center">
+      <h2 id="secret-to-clearing" class="benefits-title">The Benefits of Land Clearing and Forestry Mulching in Central Texas</h2>
+      <div class="mx-auto mt-5 h-[3px] w-24 rounded-full bg-brand-red"></div>
+      <p class="mt-8 text-base leading-8 text-[var(--color-muted)]">If you own undeveloped or under-maintained land in Austin TX or other parts of Central TX, chances are there are deeper problems than you know. The longer your land remains in its current state, the higher chance of fungus, grass disease, invasive insects, and other problems that can result in the lowering of your land's value and usability.</p>
+      <p class="mt-5 text-base leading-8 text-[var(--color-muted)]">Land clearing is a pre-emptive way to get rid of unwanted trees, vegetation, and debris as well as insects or fungus with the end result being more viable and maintainable acreage. Here at CTX, we offer land clearing services that will fit your needs as well as a way to utilize that unwanted vegetation.</p>
+      <p class="mt-5 text-base leading-8 text-[var(--color-muted)]">In addition to land clearing, we also offer mulching services. This procedure turns those unwanted trees and brush into nutrient-rich mulch full of nitrogen, potassium, and phosphorus which all plants rely on to thrive.</p>
+    </div>
+  </section>
+
+  <StatsRollover items={stats} />
+
+  <section aria-label="Mid page call to action" class="cta-band cta-band-photo hidden py-6 text-white md:block" style={`--cta-photo:url(${heroBg.src})`}>
+    <div class="container-standard flex flex-wrap items-center justify-between gap-3">
+      <div>
+        <p class="text-[clamp(1.8rem,3vw,2.65rem)] font-semibold leading-tight">Get a Free Estimate Now!</p>
+        <p class="mt-2 text-sm text-white/90">CTX Land Clearing and Forestry Mulching offers competitive rates. Get a free estimate for our services today.</p>
+      </div>
+      <a href="/contact-us/" class="btn-primary" data-track="service_cta_click" data-label="Mid CTA Estimate">Get Your Free Estimate</a>
+    </div>
+  </section>
+
+  <section class="section-standard section-polish service-showcase-section" aria-labelledby="services-heading">
+    <div class="container-standard">
+      <h2 id="services-heading" class="font-[var(--font-display)] text-[clamp(2.2rem,4.8vw,4rem)] uppercase tracking-tight">Land Clearing Services in Central Texas</h2>
+      <div class="mx-auto mt-4 h-[3px] w-24 rounded-full bg-brand-red"></div>
+      <p class="mx-auto mt-5 max-w-3xl text-base leading-8 text-[var(--color-muted)]">From lot clearing and forestry mulching to grade-ready site prep, our process is built to keep your project moving with clear communication and reliable timelines.</p>
+      <div class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {homepageServices.map((service) => <ServiceCard {...service} />)}
+      </div>
+      <p class="mt-5 text-sm text-[var(--color-muted)]">
+        Explore more: <a href="/services/" class="link-cta">all services</a>, <a href="/service-areas/" class="link-cta">service areas</a>, and <a href="/contact-us/" class="link-cta">contact page</a>.
+      </p>
+    </div>
+  </section>
+
+  <section aria-label="Post services call to action" class="cta-band cta-band-primary hidden py-5 text-white md:block">
+    <div class="container-standard flex items-center justify-between gap-3 md:flex-nowrap">
+      <p class="min-w-0 text-sm font-semibold uppercase tracking-wide">Contact us to schedule your free consultation.</p>
+      <a href={`tel:${company.phoneHref}`} class="btn shrink-0 bg-white px-5 py-2 text-brand-dark" data-track="call_click">{company.phone}</a>
+    </div>
+  </section>
+
+  <section class="capability-parity-section" aria-labelledby="capabilities-heading">
+    <h2 id="capabilities-heading" class="sr-only">Capabilities for Site-Ready Land</h2>
+    <article class="capability-row">
+      <div class="capability-media">
+        <Picture
+          src={gradingLevelingImage}
+          alt="Grading and leveling work in progress on a Central Texas site"
+          formats={['avif', 'webp']}
+          widths={[640, 960, 1280, 1600]}
+          sizes="(min-width: 768px) 50vw, 100vw"
+          loading="lazy"
+          decoding="async"
+          class="h-full w-full object-cover"
+        />
+      </div>
+      <div class="capability-copy">
+        <h3>Grading and Leveling</h3>
+        <p>If you're looking to lay down a new commercial road, railroad, or maybe just looking to minimize runoff, our team has you covered. Our grading specialists can help ensure your land is meeting your requirements and if it isn't up to snuff, assist with completely reshaping it to match the criteria of your project.</p>
+        <p>In addition to grading, we also offer <a href="/land-grading-central-texas/" class="link-cta">land grading services</a> for farmland and residential or commercial property where level ground matters most.</p>
+      </div>
+    </article>
+    <article class="capability-row capability-row-reverse">
+      <div class="capability-media">
+        <Picture
+          src={constructionSitePrepImage}
+          alt="Construction site preparation after land clearing in Austin Texas"
+          formats={['avif', 'webp']}
+          widths={[640, 960, 1280, 1600]}
+          sizes="(min-width: 768px) 50vw, 100vw"
+          loading="lazy"
+          decoding="async"
+          class="h-full w-full object-cover"
+        />
+      </div>
+      <div class="capability-copy">
+        <h3>Construction Site Prep</h3>
+        <p>Whether you're opening a homesite, improving access roads, or preparing for utility and foundation work, our team structures site prep around project readiness and schedule clarity so your next phase can begin without unnecessary delays.</p>
+        <p>See the full process and service path on our <a href="/land-clearing-services-central-texas/" class="link-cta">land clearing services page</a>.</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="section-standard benefits-parity-section" aria-labelledby="benefits-heading">
+    <div class="container-standard benefits-parity-grid">
+      <article class="benefits-parity-copy">
+        <h2 id="benefits-heading">4 Benefits of Working With Us</h2>
+        <div class="benefits-parity-divider" aria-hidden="true"></div>
+        <p>If you found your way here by typing <a href="/land-clearing-services-central-texas/" class="link-cta">land clearing Austin TX</a> into your search bar or by a referral, then you're probably aware of how many land clearing specialists and contractors are out there. Unlike the typical land clearing company, only CTX can offer four major benefits:</p>
+        <ul class="benefits-parity-list">
+          <li>Customer Focused Business</li>
+          <li>Attention to Detail</li>
+          <li>Modernized Approach</li>
+          <li>Full Service</li>
+        </ul>
+        <p>At CTX, we focus on you, the customer. While we assist you throughout the process, our end goal is to make your plan come to fruition and ensure your wants are met before the job is done.</p>
+        <p>Finally, we do not stop at just land clearing. We also offer mulching, tree removal, surveying support, and additional services for Austin TX and nearby Central Texas communities.</p>
+      </article>
+      <aside class="benefits-parity-media" aria-label="Benefits image collage">
+        <Picture
+          src={benefitsImage1}
+          alt="Cleared Central Texas property with healthy tree line and improved access"
+          formats={['avif', 'webp']}
+          widths={[640, 960, 1280]}
+          sizes="(min-width: 1024px) 44vw, (min-width: 768px) 50vw, 100vw"
+          loading="lazy"
+          decoding="async"
+          class="benefits-parity-image benefits-parity-image-main"
+        />
+        <Picture
+          src={benefitsImage2}
+          alt="Forestry mulching work reducing brush while preserving usable soil"
+          formats={['avif', 'webp']}
+          widths={[480, 720, 960]}
+          sizes="(min-width: 1024px) 23vw, (min-width: 768px) 30vw, 70vw"
+          loading="lazy"
+          decoding="async"
+          class="benefits-parity-image benefits-parity-image-overlay"
+        />
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-standard faq-parity-section" aria-labelledby="faq-heading">
+    <div class="container-standard">
+      <div class="mx-auto max-w-4xl text-center">
+        <h2 id="faq-heading" class="faq-parity-title">Frequently Asked Questions From Current and Future Clients</h2>
+        <div class="mx-auto mt-4 h-[3px] w-24 rounded-full bg-brand-red"></div>
+      </div>
+      <div class="mt-8 grid items-start gap-5 md:grid-cols-2">
+        {faqCards.map((faq) => (
+          <article class="faq-parity-card">
+            <h3>{faq.q}</h3>
+            <div class="faq-parity-body">
+              <p>{faq.a}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="mt-6 text-center text-sm text-[var(--color-muted)]">
+        Looking for more answers? <a href="/faqs/" class="link-cta">View all FAQs</a>.
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>

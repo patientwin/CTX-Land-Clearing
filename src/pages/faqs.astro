@@ -1,0 +1,143 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { faqSchema } from '@/utils/schema';
+
+const seo = {
+  title: 'FAQs | CTX Land Clearing and Forestry Mulching',
+  description: 'Frequently asked questions about land clearing, forestry mulching, grading timelines, permits, pricing factors, and contractor selection in Central Texas.',
+  path: '/faqs/'
+};
+
+const faqItems = [
+  {
+    q: 'What is land clearing?',
+    a: 'Land clearing is the process of removing unwanted vegetation, brush, and obstacles so property can be used more effectively for ranching, access, construction, or maintenance.'
+  },
+  {
+    q: 'What is forestry mulching?',
+    a: 'Forestry mulching uses specialized machinery to process brush and small trees into mulch on-site. It can reduce hauling while helping preserve topsoil compared with full scrape-and-haul methods.'
+  },
+  {
+    q: 'What are the benefits of land clearing and forestry mulching?',
+    a: 'Common benefits include improved access, reduced overgrowth pressure, better project readiness, and easier ongoing property maintenance. Forestry mulching can also lower cleanup complexity on many scopes.'
+  },
+  {
+    q: 'What are the different methods of land clearing and forestry mulching?',
+    a: 'Methods can include selective machine clearing, forestry mulching, stump removal, right-of-way opening, and grading support. The right method depends on property condition, timeline, and end goal.'
+  },
+  {
+    q: 'What are the costs associated with land clearing and forestry mulching?',
+    a: 'Costs vary based on acreage, density of brush/cedar, access constraints, debris handling needs, and required finish quality. A scoped estimate is the best way to compare realistic options.'
+  },
+  {
+    q: 'What are the best practices for land clearing and forestry mulching?',
+    a: 'Best practices include defining clear project goals, choosing appropriate equipment, protecting desired trees and access routes, and sequencing work so grading and next-phase prep are not delayed.'
+  },
+  {
+    q: 'What types of equipment are used for land clearing and forestry mulching?',
+    a: 'Projects often use tracked skid steers, mulching heads, grapples, buckets, and support attachments. Additional equipment is selected when grading, haul, or specialized terrain work is needed.'
+  },
+  {
+    q: 'What are manual labor methods used for land clearing and forestry mulching?',
+    a: 'Manual methods can include targeted trimming, hand-cutting in tight zones, debris staging, and detail cleanup where machinery access is limited.'
+  },
+  {
+    q: 'What are the different types of bulldozers used for land clearing?',
+    a: 'Dozers can be used for heavy pushing and broad reshaping when project scope calls for it. Equipment selection depends on slope, soil conditions, and clearing intensity.'
+  },
+  {
+    q: 'What are the different types of excavators used for land clearing?',
+    a: 'Excavators may be used for stump extraction, trenching, debris movement, and deep material handling. The machine size and attachment setup are chosen by site and scope.'
+  },
+  {
+    q: 'What are the different brush cutters used for forestry mulching?',
+    a: 'Forestry mulching heads and brush cutters vary by material size and terrain requirements. Proper matching improves throughput and finish quality while controlling disturbance.'
+  },
+  {
+    q: 'What types of stump grinders are used for forestry mulching?',
+    a: 'Stump treatment can involve grinding or removal, depending on end use of the site. The approach is chosen based on grading plans, construction goals, and budget.'
+  },
+  {
+    q: 'Can land clearing stop insect or pest infestations?',
+    a: 'Clearing can reduce habitat pressure and overgrowth that contribute to pest issues, but it is not a complete pest-control substitute. Severe infestations may still require dedicated treatment.'
+  },
+  {
+    q: 'Can land clearing prevent the growth of invasive plants?',
+    a: 'Clearing can reduce current invasive growth and improve management conditions. Ongoing maintenance is still important to limit regrowth over time.'
+  },
+  {
+    q: 'How does land clearing help to control erosion?',
+    a: 'When paired with proper grading and drainage planning, clearing can improve water flow and reduce unmanaged runoff. Preserving practical ground cover is also part of erosion-aware planning.'
+  },
+  {
+    q: 'Is brush removal the same as land clearing?',
+    a: 'Not always. Brush removal is often one part of a larger land clearing scope, which may also include tree work, stump handling, access prep, and grading coordination.'
+  },
+  {
+    q: 'How do you know which type of land clearing service you need for your property?',
+    a: 'Start with your primary objective: access, construction prep, maintenance, visibility, or drainage support. Then match the service path to your timeline and site conditions.'
+  },
+  {
+    q: 'How long will grading and leveling take on my property?',
+    a: 'Timeline depends on property size, elevation changes, weather conditions, and finish requirements. Most projects can be staged with clearing so the next phase starts efficiently.'
+  },
+  {
+    q: 'What Central Texas permits do I need for a land clearing project?',
+    a: 'Permit requirements vary by location, project scope, and local rules. Utility considerations, protected zones, and municipal guidelines can all affect approvals.'
+  },
+  {
+    q: 'What is fence line clearing, and why do you need it?',
+    a: 'Fence line clearing opens overgrowth along boundaries to improve access, visibility, and maintenance. It is common for ranch properties and perimeter restoration projects.'
+  },
+  {
+    q: 'What should I do with the debris after my land clearing project?',
+    a: 'Debris strategy is typically planned before work begins. Depending on project goals, material may be mulched on-site, staged, hauled, or processed as part of the overall scope.'
+  },
+  {
+    q: 'How do I find the best land clearing contractor in Central Texas?',
+    a: 'Look for local project experience, clear communication, practical equipment fit, and transparent estimating. Strong contractor fit usually comes from process clarity, not price alone.'
+  },
+  {
+    q: 'How to know if your land clearing contractor is licensed and insured?',
+    a: 'Ask directly for proof of insurance and confirm business details before scheduling. A reliable contractor should be clear about coverage, process, and scope expectations.'
+  }
+];
+---
+<BaseLayout seo={seo} schema={faqSchema(faqItems)}>
+  <section class="service-hero">
+    <div class="service-hero-overlay" aria-hidden="true"></div>
+    <div class="container-standard service-hero-inner">
+      <h1>Frequently Asked Questions</h1>
+    </div>
+  </section>
+
+  <section class="section-standard service-main">
+    <div class="container-standard">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'FAQs', href: '/faqs/' }]} />
+      <div class="faq-page-intro mt-4">
+        <h2>Land Clearing and Forestry Mulching FAQ</h2>
+        <div class="service-divider" aria-hidden="true"></div>
+        <p>Browse answers to common questions about land clearing, forestry mulching, grading, permits, and project planning across Austin and nearby Central Texas communities.</p>
+      </div>
+
+      <div class="faq-page-grid mt-8" id="faq-list">
+        {faqItems.map((item, index) => (
+          <details class="faq-page-item">
+            <summary>
+              <span class="faq-page-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+              <span>{item.q}</span>
+            </summary>
+            <div class="faq-page-answer">
+              <p>{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <div class="faq-page-links mt-10">
+        <p>Need project-specific help? Visit <a href="/contact-us/" class="link-cta">Contact Us</a> or review <a href="/services/" class="link-cta">Services</a> and <a href="/service-areas/" class="link-cta">Service Areas</a>.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

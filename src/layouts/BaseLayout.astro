@@ -1,0 +1,55 @@
+---
+import '@/styles/global.css';
+import SiteHead from '@/components/SiteHead.astro';
+import SiteHeader from '@/components/SiteHeader.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import CallNowStickyMobile from '@/components/CallNowStickyMobile.astro';
+import ScrollToTopButton from '@/components/ScrollToTopButton.astro';
+import type { SeoConfig } from '@/utils/seo';
+
+const { seo, schema = [] } = Astro.props as { seo: SeoConfig; schema?: unknown | unknown[] };
+const schemas = Array.isArray(schema) ? schema : [schema];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap"
+      media="(min-width: 768px)"
+    />
+    <SiteHead {...seo} />
+    {schemas.filter(Boolean).map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}
+  </head>
+  <body>
+    <a href="#content" class="skip-link">Skip to content</a>
+    <SiteHeader />
+    <main id="content"><slot /></main>
+    <SiteFooter />
+    <ScrollToTopButton />
+    <CallNowStickyMobile />
+
+    <form name="quick-estimate" data-netlify="true" hidden>
+      <input name="name" /><input name="phone" /><input name="email" /><input name="service" /><input name="project_size" /><input name="message" />
+      <input name="utm_source" /><input name="utm_medium" /><input name="utm_campaign" /><input name="utm_term" /><input name="utm_content" /><input name="landing_path" /><input name="bot_field" />
+    </form>
+    <form name="full-estimate" data-netlify="true" hidden>
+      <input name="name" /><input name="phone" /><input name="email" /><input name="project_address" /><input name="service" /><input name="acreage" /><input name="message" />
+      <input name="utm_source" /><input name="utm_medium" /><input name="utm_campaign" /><input name="utm_term" /><input name="utm_content" /><input name="landing_path" /><input name="bot_field" />
+    </form>
+
+    <script>
+      import { initTracking } from '@/scripts/tracking';
+      import { initForms } from '@/scripts/forms';
+      import { initWhoCtxMotion } from '@/scripts/whoCtxMotion';
+      import { initStatsCountUp } from '@/scripts/statsCountUp';
+      initTracking();
+      initForms();
+      initWhoCtxMotion();
+      initStatsCountUp();
+    </script>
+  </body>
+</html>
