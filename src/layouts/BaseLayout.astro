@@ -32,11 +32,13 @@ const schemas = Array.isArray(schema) ? schema : [schema];
     <ScrollToTopButton />
     <CallNowStickyMobile />
 
-    <form name="quick-estimate" data-netlify="true" hidden>
+    <form name="quick-estimate" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="bot_field" hidden>
+      <input type="hidden" name="form-name" value="quick-estimate" />
       <input name="name" /><input name="phone" /><input name="email" /><input name="service" /><input name="project_size" /><input name="message" />
       <input name="utm_source" /><input name="utm_medium" /><input name="utm_campaign" /><input name="utm_term" /><input name="utm_content" /><input name="landing_path" /><input name="bot_field" />
     </form>
-    <form name="full-estimate" data-netlify="true" hidden>
+    <form name="full-estimate" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="bot_field" hidden>
+      <input type="hidden" name="form-name" value="full-estimate" />
       <input name="name" /><input name="phone" /><input name="email" /><input name="project_address" /><input name="service" /><input name="acreage" /><input name="message" />
       <input name="utm_source" /><input name="utm_medium" /><input name="utm_campaign" /><input name="utm_term" /><input name="utm_content" /><input name="landing_path" /><input name="bot_field" />
     </form>
